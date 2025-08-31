@@ -1,95 +1,138 @@
-body {
+/* Reset */
+* {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f9f9f9;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
   color: #333;
 }
 
+/* App container */
+.app-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* products 2/3, cart 1/3 */
+  gap: 30px;
+  padding: 40px;
+  max-width: 1400px;   /* wider for laptops */
+  margin: 0 auto;      /* centered */
+}
+
+/* Box wrapper */
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111;
-  color: #fff;
-  padding: 1rem 2rem;
+  padding: 15px 40px;
+  background: #007bff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
-.navbar .logo {
-  font-size: 1.5rem;
+.logo {
+  font-size: 20px;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+.cart-info {
+  font-size: 16px;
+  background: white;
+  color: #007bff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
 }
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
+/* Products grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.home {
-  padding: 2rem;
+/* Product card */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
   text-align: center;
 }
 
-.jobs-page {
-  padding: 2rem;
+.product-card:hover {
+  transform: translateY(-5px);
 }
 
-.search-bar {
-  padding: 0.6rem;
-  margin-bottom: 1rem;
+.product-card img {
   width: 100%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.jobs-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.job-card {
-  background: white;
-  padding: 1rem;
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
 }
 
-.job-card h3 {
-  margin: 0 0 0.5rem;
+.product-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
 }
 
-.badge {
-  display: inline-block;
-  padding: 0.3rem 0.6rem;
+.product-card p {
+  margin: 5px 0;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Buttons */
+button {
   background: #007bff;
   color: white;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-
-.details-btn, .back-btn {
-  display: inline-block;
-  margin-top: 0.8rem;
-  padding: 0.5rem 1rem;
-  background: #28a745;
-  color: white;
+  border: none;
+  padding: 8px 14px;
   border-radius: 6px;
-  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  transition: background 0.3s ease;
 }
 
-.details-btn:hover, .back-btn:hover {
-  background: #218838;
+button:hover {
+  background: #0056b3;
 }
 
-.job-details {
-  padding: 2rem;
-  background: white;
-  margin: 2rem;
-  border-radius: 8px;
+/* Cart items */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Cart total */
+.total {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #222;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 1000px) {
+  .app-container {
+    grid-template-columns: 1fr; /* stack cart below products */
+  }
 }

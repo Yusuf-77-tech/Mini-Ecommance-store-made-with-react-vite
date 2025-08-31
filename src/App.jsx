@@ -1,28 +1,27 @@
-import { Routes, Route, Link} from "react-router-dom";
+import React, { useState } from "react";
+import ProductList from "./component/Productlist";
+import Cart from "./component/Cart";
 import Navbar from "./component/Navbar";
-import Home from "./pages/Home";
-import Jobs from "./pages/Jobs";
-import JobDetails from "./pages/JobDetails";
+import "./index.css";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
+
   return (
     <>
-    <div>
-      {/* <nav>
-        <Link to="/">Home</Link>
-        <Link to="/jobs">Jobs</Link>
-        <Link to="/jobs/:id">JobDetails</Link>
-      </nav> */}
-
-    </div>
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/jobs/:id" element={<JobDetails />} />
-      </Routes>
-    </div>
+      <Navbar cartCount={cart.length} />
+      <div className="app-container">
+        <ProductList addToCart={addToCart} />
+        <Cart cart={cart} removeFromCart={removeFromCart} />
+      </div>
     </>
   );
 }
